@@ -1,9 +1,9 @@
+import Messager from "./Messager";
 
-import { ajax } from 'rxjs/ajax';
-import { map, catchError, of } from 'rxjs';
+const url = "https://polling-backend-rzmw.onrender.com/messages/unread";
 
-const obs$ = ajax.getJSON('http://localhost:7070/messages/unread');
+const container = document.querySelector(".list-items");
 
-obs$.subscribe({
-  next: value => console.log(value)
-});
+const messager = new Messager(url, container);
+
+messager.start();
